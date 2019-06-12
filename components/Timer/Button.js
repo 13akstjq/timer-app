@@ -1,4 +1,4 @@
-import React ,{Compoenet} from "react";
+import React  from "react";
 import {View,TouchableOpacity, StyleSheet} from "react-native";
 import PropTypes from "prop-types";
 import {FontAwesome} from "@expo/vector-icons";
@@ -17,3 +17,6 @@ Button.propTypes = {
 }
 
 export default Button;
+
+
+

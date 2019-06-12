@@ -1,65 +1,24 @@
-import React , {Component} from "react";
-import {View,Text,StyleSheet,StatusBar} from "react-native";
-import * as Font from "expo-font";
-import Button from "./Button.js";
-export default class Timer extends Component {
+import {connect} from "react-redux";
+import {Timer} from "./presenter";
 
 
-constructor(props){
-    super(props);
-    this.state = {
-        isReady : false
-    }
-}
 
-async componentDidMount(){
-    await Font.loadAsync({'BM-font': require('../../assets/fonts/BMHANNAPro.ttf')});
-    this.setState({
-        isReady : true
-    })
-}
-
-
-    render() {
-        return(
-            <View style = { styles.container}>
-                <StatusBar barStyle={"light-content"}></StatusBar>
-                <View style = { styles.upper}>
-                    <Text style = { styles.time}>25:00</Text>
-                </View>
-                <View style = { styles.lower}>
-                    <Button iconName={"play-circle"} onPress={()=> alert("it works")}></Button>
-                    <Button iconName={"stop-circle"} onPress={()=> alert("it works")}></Button>
-                </View>
-            </View>
-        )
-    }
-}
-
-const styles = StyleSheet.create({
-    container : {
-        flex : 1,
+// const mapStateToProps = (state) =>({
+    
+//     isPlaying : state.isPlaying,
+//     elapsedTime : state.elapsedTime,
+//     timeDuration : state.timeDuration
+// })
+console.log("asdfsadf");
+function mapStateToProps(state){
+    console.log("asdfasdF");
+    const { isPlaying , elapsedTime,timeDuration} = state;
+    return{
         
-        backgroundColor : "#CE0B24"
-    },
-    upper : {
-        flex : 1,
-        justifyContent : "center",
-        alignItems : "center",
-        backgroundColor : "#CE0B24"
-    },
-    time : {
-        color : "white",
-        fontSize : 120,
-        fontFamily : "BM-font",
-        fontWeight : "normal"
-    },
-    lower : {
-        flex: 1,
-        fontSize : 50,
-        color : "white",
-        alignItems : "center",
-        justifyContent : "center",
-        backgroundColor : "#CE0B24"
+        isPlaying,
+        elapsedTime,
+        timeDuration
     }
-})
+}
+
+export default connect(mapStateToProps)(Timer);
