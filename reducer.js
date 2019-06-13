@@ -87,6 +87,7 @@ const actionCreators = {
     addSecond,
 };
 
+export {actionCreators}; // actionCreators를 export해줘야함
 // Export Reducer
 
 export default reducer;
