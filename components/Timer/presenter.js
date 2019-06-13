@@ -1,19 +1,26 @@
 import React , {Component} from "react";
 import {View,Text,StyleSheet,StatusBar} from "react-native";
 // import * as Font from "expo-font";
-import Button from "./Button";
+import Button from "../Button/Button";
+import {connect} from 'react-redux';
 
+const mapStateToProps = state =>
+ ({ 
+     isPlaying: state.isPlaying,
+    elapsedTime : state.elapsedTime,
+    timerDuration : state.timerDuration
+})
 
  class Timer extends Component {
 
     // async componentDidMount(){
     //     await Font.loadAsync({'BM-font': require('../../assets/fonts/BMHANNAPro.ttf')});
     // }
-
-
+    
     render() {
-        console.log(this.props);
-        
+        // console.log(this.props);
+        const {isPlaying , elapsedTime , timerDuration} = this.props;
+        console.log(isPlaying , elapsedTime, timerDuration)
         return(
             <View style = { styles.container}>
                 <StatusBar barStyle={"light-content"}></StatusBar>
@@ -56,5 +63,4 @@ const styles = StyleSheet.create({
         backgroundColor : "#CE0B24"
     }
 })
-
-export default Timer;
+export default connect(mapStateToProps)(Timer);

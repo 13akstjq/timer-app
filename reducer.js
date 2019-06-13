@@ -8,19 +8,19 @@ const ADD_SECOND = "ADD_SECOND";
 
 // Action Creater
 
-function startTimer(){
+export function startTimer(){
     return{
         type : START_TIMER
     };
 }
 
-function restartTIMER(){
+export function restartTimer(){
     return{
         type : RESTART_TIMER
     };
 }
 
-function addSecond(){
+export function addSecond(){
     return{
         type : ADD_SECOND
     };
@@ -37,12 +37,13 @@ const initialState = {
 function reducer(state =  initialState,action){
     switch(action.type){
         case START_TIMER : 
-            return applyStartTimer(state,action);
+            return applyStartTimer(state);
         case RESTART_TIMER : 
-            return applyRestartTimer(state,action);
+            return applyRestartTimer(state);
         case ADD_SECOND : 
-            return applyAddSecond(state,action);
+            return applyAddSecond(state);
         default : 
+            console.log("디폴트");
             return state;
     }
 }
@@ -82,7 +83,7 @@ function applyAddSecond(state){
 
 const actionCreators = {
     startTimer,
-    restartTIMER,
+    restartTimer,
     addSecond,
 };
 
